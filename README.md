@@ -9,7 +9,7 @@ Persian Date
 ## Browser
 
 ```html
-<script src="./persiandate.js" type="text/javascript"></script>
+<script src="./persiandate-0.0.1.min.js" type="text/javascript"></script>
 
 <p id="demo"></p>
 
