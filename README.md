@@ -2,9 +2,10 @@
 Javascript Persian Date Extension
 version: 0.0.1
 
+
 Persian Date
 ==============
-
+size: 4 kb 
 
 ## Browser
 
