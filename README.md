@@ -22,7 +22,7 @@ size: 4 kb
 ```
 
 ## example
-### jFormat()
+### jFormat 
 ```javascript
 new Date().jFormat('yy'); // int: 97
 new Date().jFormat('yyyy'); // int: 1397
@@ -35,37 +35,37 @@ new Date().jFormat('MM'); //int: 01
 new Date().jFormat('MMM'); //string: فرو
 new Date().jFormat('MMMM'); //string:  فروردین
 ```
-### toJalali()
+### toJalali 
 ```javascript
   var jy, jm, jd;
   [jy, jm, jd] = new Date().toJalali(); // jy=1397, jm= 7, jd= 15
 ```
-### jalaliToDate()
+### jalaliToDate 
 ```javascript
   var date = new Date().jalaliToDate(1397,7,15); // date=  Wed Nov 07 2018 17:39:44 GMT+0330 (Iran Standard Time)
 ```
-### jLeap()
+### jLeap 
 ```javascript
   new Date().jLeap(1397); // false
 ```
-### leap()
+### leap 
 ```javascript
   new Date().leap(); // false
 ```
-### jGetDay()
+### jGetDay 
 ```javascript
   new Date().jGetDay(); // int: 2
 ```
-### jDaysInMonth()
+### jDaysInMonth 
 ```javascript
   new Date().jDaysInMonth(1397, 10); // int: 30
 ```
-### addDays()
+### addDays 
 ```javascript
   new Date().addDays(2); // Tue Oct 09 2018 17:43:54 GMT+0330 (Iran Standard Time)
 ```
 
-### addWeek()
+### addWeek 
 ```javascript
   new Date().addWeek(1); // Sun Oct 14 2018 17:44:45 GMT+0330 (Iran Standard Time)
   new Date().addWeek(0); // Sun Oct 07 2018 17:45:15 GMT+0330 (Iran Standard Time)
