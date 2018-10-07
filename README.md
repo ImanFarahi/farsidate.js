@@ -89,13 +89,8 @@ new Date().jFormat('MMMM'); //string:  فروردین
 ```
 ### jGetDaysOfWeek
 ```javascript
-  var Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri,
-  pSat ,pSun ,pMon ,pTue ,pWed ,pThu ,pFri,
-  nSat ,nSun ,nMon ,nTue ,nWed ,nThu ,nFri;
-
-  [pSat ,pSun ,pMon ,pTue ,pWed ,pThu ,pFri] = new Date().jGetDaysOfWeek(-1);
-  [Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri] = new Date().jGetDaysOfWeek(0);
-  [nSat ,nSun ,nMon ,nTue ,nWed ,nThu ,nFri] = new Date().jGetDaysOfWeek(1);
+  var Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri;
+  [Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri] = new Date().jGetDaysOfWeek(0); 
 ```
 
 
