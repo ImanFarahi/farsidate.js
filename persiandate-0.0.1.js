@@ -208,8 +208,8 @@ function _getTokenReplacement(token, date, lang) {
 			case 'dddd' : return locales.fa.dayNames[date.jGetDay()];
 			case 'M'    : return date.toJalali()[1];
 			case 'MM'   : return _zeroPad(date.toJalali()[1]);
-			case 'MMM'  : return locales.fa.monthNamesShort[date.jGetDay()];
-			case 'MMMM' : return locales.fa.monthNames[date.jGetDay()];
+			case 'MMM'  : return locales.fa.monthNamesShort[date.toJalali()[1]-1];
+			case 'MMMM' : return locales.fa.monthNames[date.toJalali()[1]-1];
 			case 'yy'   : return parseInt((date.toJalali()[0]+'').substring(2));
 			case 'yyyy' : return date.toJalali()[0];
 		}
