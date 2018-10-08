@@ -3,7 +3,8 @@
  * (c) 2018 Iman Farahi
  * MIT Licensed.
  * persiandate-0.0.1.js
- * http://professionalprogrammer.ir
+ * website: http://professionalprogrammer.ir
+ * email: professionalprogrammer.ir@gmail.com
  */
 
 
@@ -103,16 +104,12 @@ Date.prototype.addWeek = function (weeks) {
     return  this.setTime(6048E5 * weeks + this.valueOf()) && this;
 };
 
-Date.prototype.startOfWeek = function (pStartOfWeek) {
-	var mDifference = this.getDay() - pStartOfWeek;
-    if (mDifference < 0) {
-        mDifference += 7;
-    }
-    return this.addDays( mDifference * -1) && this;
+Date.prototype.startOfWeek = function (p) {
+	return this.addDays(((this.getDay() < 6)? ( this.getDay() * -1 - p) : 0)) && this;
 };
 
 Date.prototype.jStartOfWeek = function () {
-    return this.startOfWeek(-1) && this;
+    return this.startOfWeek(1);
 };
 
 Date.prototype.clone = function () {
@@ -147,6 +144,7 @@ var locales = {
 		dayNamesShort: ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج'],
 	}
 };
+
 
 function _zeroDel(val) {
 	return parseInt(val.replace(/\D/g, ''), 10);
