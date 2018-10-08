@@ -74,7 +74,7 @@ new Date().jFormat('MMMM'); //string:  فروردین
 
 ### startOfWeek
 ```javascript
-  new Date().startOfWeek(0); // Sun Oct 07 2018 17:46:19 GMT+0330 (Iran Standard Time)
+  new Date().startOfWeek(); // Sun Oct 07 2018 17:46:19 GMT+0330 (Iran Standard Time)
 ```
 ### jStartOfWeek
 ```javascript
