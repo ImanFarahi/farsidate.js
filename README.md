@@ -22,7 +22,7 @@ size: 4 KB
 ```
 
 ## example
-### jFormat 
+### jFormat function
 ```javascript
 new Date().jFormat('yy'); // int: 97
 new Date().jFormat('yyyy'); // int: 1397
@@ -35,52 +35,52 @@ new Date().jFormat('MM'); //int: 01
 new Date().jFormat('MMM'); //string: فرو
 new Date().jFormat('MMMM'); //string:  فروردین
 ```
-### toJalali 
+### toJalali function
 ```javascript
   var jy, jm, jd;
   [jy, jm, jd] = new Date().toJalali(); // jy=1397, jm= 7, jd= 15
 ```
-### jalaliToDate 
+### jalaliToDate function
 ```javascript
   var date = new Date().jalaliToDate(1397,7,15); // date=  Wed Nov 07 2018 17:39:44 GMT+0330 (Iran Standard Time)
 ```
-### jLeap 
+### jLeap function
 ```javascript
   new Date().jLeap(1397); // false
 ```
-### leap 
+### leap function
 ```javascript
   new Date().leap(); // false
 ```
-### jGetDay 
+### jGetDay function
 ```javascript
   new Date().jGetDay(); // int: 2
 ```
-### jDaysInMonth 
+### jDaysInMonth function
 ```javascript
   new Date().jDaysInMonth(1397, 10); // int: 30
 ```
-### addDays 
+### addDays function
 ```javascript
   new Date().addDays(2); // Tue Oct 09 2018 17:43:54 GMT+0330 (Iran Standard Time)
 ```
 
-### addWeek 
+### addWeek function
 ```javascript
   new Date().addWeek(1); // Sun Oct 14 2018 17:44:45 GMT+0330 (Iran Standard Time)
   new Date().addWeek(0); // Sun Oct 07 2018 17:45:15 GMT+0330 (Iran Standard Time)
   new Date().addWeek(-1); // Sun Sep 30 2018 17:44:28 GMT+0330 (Iran Standard Time)
 ```
 
-### startOfWeek
+### startOfWeek function
 ```javascript
   new Date().startOfWeek(); // Sun Oct 07 2018 17:46:19 GMT+0330 (Iran Standard Time)
 ```
-### jStartOfWeek
+### jStartOfWeek function
 ```javascript
   new Date().jStartOfWeek(); // Sat Oct 06 2018 17:47:28 GMT+0330 (Iran Standard Time)
 ```
-### clone
+### clone function
 ```javascript
   new Date().clone(); 
   var today= new Date()
@@ -88,7 +88,7 @@ new Date().jFormat('MMMM'); //string:  فروردین
    // Sat: Sat Oct 13 2018 17:49:33 GMT+0330 (Iran Standard Time)
    // today:Sun Oct 07 2018 17:49:33 GMT+0330 (Iran Standard Time)
 ```
-### jGetDaysOfWeek
+### jGetDaysOfWeek function
 ```javascript
   var Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri;
   [Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri] = new Date().jGetDaysOfWeek(0); 
