@@ -15,8 +15,8 @@ size: 4 KB
 <p id="demo"></p>
 
 <script type="text/javascript">
-   var msg = new Date().jFormat('yyyy'); // 1397 
-  document.getElementById("demo").innerHTML = msg;
+   var date = new Date().jFormat('yyyy'); // 1397 
+  document.getElementById("demo").innerHTML = date;
 </script>
 
 ```
