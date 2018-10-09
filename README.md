@@ -95,6 +95,10 @@ myDate.jFormat('MMMM'); //  فروردین
   [Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri] = new Date().jGetDaysOfWeek(0); 
 ```
 
+### toPersianDigits function
+```javascript
+new Date().jFormat('ddd. d MMMM yyyy').toPersianDigits() // س. ۱۷ مهر ۱۳۹۷ 
+```
 
 
 
