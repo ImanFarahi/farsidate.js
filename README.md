@@ -24,16 +24,17 @@ size: 4 KB
 ## example
 ### jFormat function
 ```javascript
-new Date().jFormat('yy'); // int: 97
-new Date().jFormat('yyyy'); // int: 1397
-new Date().jFormat('d'); // int: 5
-new Date().jFormat('dd'); // int: 05
-new Date().jFormat('ddd'); // string: د
-new Date().jFormat('dddd'); // string: دوشنبه
-new Date().jFormat('M'); //int: 1
-new Date().jFormat('MM'); //int: 01
-new Date().jFormat('MMM'); //string: فرو
-new Date().jFormat('MMMM'); //string:  فروردین
+var myDate = new Date();
+myDate.jFormat('yy'); //   97
+myDate.jFormat('yyyy'); //  1397
+myDate.jFormat('d'); //   5
+myDate.jFormat('dd'); //   05
+myDate.jFormat('ddd'); //   د
+myDate.jFormat('dddd'); //   دوشنبه
+myDate.jFormat('M'); //  1
+myDate.jFormat('MM'); //  01
+myDate.jFormat('MMM'); //  فرو
+myDate.jFormat('MMMM'); //  فروردین
 ```
 ### toJalali function
 ```javascript
