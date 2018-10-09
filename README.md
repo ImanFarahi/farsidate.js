@@ -98,6 +98,7 @@ myDate.jFormat('MMMM'); //  فروردین
 ### toPersianDigits function
 ```javascript
 new Date().jFormat('ddd. d MMMM yyyy').toPersianDigits() // س. ۱۷ مهر ۱۳۹۷ 
+'1234'.toPersianDigits() // ۱۲۳۴
 ```
 
 
