@@ -100,6 +100,10 @@ myDate.jFormat('MMMM'); //  فروردین
 new Date().jFormat('ddd. d MMMM yyyy').toPersianDigits() // س. ۱۷ مهر ۱۳۹۷ 
 '1234'.toPersianDigits() // ۱۲۳۴
 ```
+### isDate function
+```javascript
+Date.isDate("2018-10-11") // false 
+```
 
 
 
