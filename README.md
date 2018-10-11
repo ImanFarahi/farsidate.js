@@ -92,7 +92,7 @@ myDate.jFormat('MMMM'); //  فروردین
 ### jGetDaysOfWeek function
 ```javascript
   var Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri;
-  [Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri] = new Date().jGetDaysOfWeek(0); 
+  [Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri] = new Date().jGetDaysOfWeek(); 
 ```
 
 ### toPersianDigits function
