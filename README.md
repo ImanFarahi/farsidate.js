@@ -1,5 +1,5 @@
 # farsdate.js
-Javascript Persian Date Extension
+Javascript Farsi Date Extension
 <br />
 WebSite: http://farsidate.ir
 <br />
