@@ -5,7 +5,7 @@ version: 0.0.1
 
 Persian Date
 ==============
-size: 4 KB 
+size: 6 KB 
 
 ## Browser
 
