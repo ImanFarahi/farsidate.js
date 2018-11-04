@@ -59,7 +59,7 @@ myDate.jFormat('MMMM'); //  فروردین
 ```
 ### jDaysInMonth function
 ```javascript
-  new Date().jDaysInMonth(1397, 10); // int: 30
+  new Date().jDaysInMonth(); // int: 30
 ```
 ### addDays function
 ```javascript
@@ -81,6 +81,12 @@ myDate.jFormat('MMMM'); //  فروردین
 ```javascript
   new Date().jStartOfWeek(); // Sat Oct 06 2018 17:47:28 GMT+0330 (Iran Standard Time)
 ```
+
+### jStartOfMonth function
+```javascript
+new Date('2018-11-04').jStartOfMonth(); // Date 2018-10-23T00:00:00.000Z
+```
+
 ### clone function
 ```javascript
   new Date().clone(); 
@@ -94,6 +100,11 @@ myDate.jFormat('MMMM'); //  فروردین
   var Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri;
   [Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri] = new Date().jGetDaysOfWeek(); 
 ```
+### jGetDaysOfMonth function
+```javascript
+var w1 ,w2 ,w3 ,w4 ,w5 ,w6;
+[w1 ,w2 ,w3 ,w4 ,w5 ,w6] = new Date().jGetDaysOfMonth();
+```
 
 ### toPersianDigits function
 ```javascript
@@ -103,7 +114,11 @@ new Date().jFormat('ddd. d MMMM yyyy').toPersianDigits() // س. ۱۷ مهر ۱۳
 ### isDate function
 ```javascript
 Date.isDate("2018-10-11") // false 
+Date.isDate(new Date()) // true 
+Date.isDate(new Date("2018-10-11")) // true
 ```
+
+
 
 
 
