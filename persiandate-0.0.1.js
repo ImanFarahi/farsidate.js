@@ -6,7 +6,6 @@
  * website: http://professionalprogrammer.ir
  * email: professionalprogrammer.ir@gmail.com
  */
-
 Date.prototype.toJalali = function() {
     var gy, gm, gd, gy2, g_d_m, jy, jm, jd, days;
     gy = this.getFullYear();
@@ -37,7 +36,7 @@ Date.prototype.toJalali = function() {
 };
 
 Date.prototype.jalaliToDate = function(jy, jm, jd) {
-    var gy, gm, gd, days, sal_a;
+    var gy, gm, gd, days, sal_a, v;
     if (jy > 979) {
         gy = 1600;
         jy -= 979;
@@ -65,7 +64,7 @@ Date.prototype.jalaliToDate = function(jy, jm, jd) {
         if (gd <= v) break;
         gd -= v;
     }
-    return this.setFullYear(gy) && this.setMonth(gm) && this.setDate(gd) && this;
+    return this.setFullYear(gy) && this.setMonth(gm - 1) && this.setDate(gd) && this;
 };
 
 Date.prototype.jLeap = function(jy) {
@@ -86,16 +85,22 @@ Date.prototype.jGetDay = function() {
     }
 };
 
-Date.prototype.jDaysInMonth = function(jy, jm) {
+Date.prototype.jDaysInMonth = function() {
+    var jy, jm;
+    [jy, jm, ] = this.toJalali();
     if (jm < 1 || jm > 12) return 0;
     if (jm < 7) return 31;
     if (jm < 12) return 30;
-    if (leap_persian(jy)) {
+    if (this.jLeap(jy)) {
         return 30;
     }
     return 29;
 };
-
+Date.prototype.jStartOfMonth = function() {
+    var jy, jm;
+    [jy, jm, ] = this.toJalali();
+    return this.jalaliToDate(jy, jm, 1);
+};
 Date.prototype.addDays = function(days) {
     return this.setTime(864E5 * days + this.valueOf()) && this;
 };
@@ -115,6 +120,23 @@ Date.prototype.clone = function() {
     return new Date(this.getTime());
 };
 
+Date.prototype.jGetDaysOfMonth = function() {
+    var fd, dim, d, out;
+    fd = this.clone().jStartOfMonth();
+    out = [fd.jGetDaysOfWeek(),
+        fd.clone().addWeek(1).jGetDaysOfWeek(),
+        fd.clone().addWeek(2).jGetDaysOfWeek(),
+        fd.clone().addWeek(3).jGetDaysOfWeek(),
+        fd.clone().addWeek(4).jGetDaysOfWeek()
+    ];
+    dim = fd.jDaysInMonth();
+    d = fd.jGetDay();
+    if ((d == 6 && dim == 31) || (d == 0 && dim >= 30)) {
+        out.push(fd.clone().addWeek(5).jGetDaysOfWeek());
+    }
+    return out;
+};
+
 Date.prototype.jGetDaysOfWeek = function() {
     var Sat = this.clone().jStartOfWeek();
     return [Sat, Sat.clone().addDays(1), Sat.clone().addDays(2),
@@ -132,12 +154,12 @@ Date.isDate = function(input) {
 
 /* start other */
 String.prototype.toPersianDigits = function() {
-        var charCodeZero = '۰'.charCodeAt(0);
-        return this.replace(/[0-9]/g, function(w) {
-            return String.fromCharCode(parseInt(w) + charCodeZero);
-        });
+    var charCodeZero = '۰'.charCodeAt(0);
+    return this.replace(/[0-9]/g, function(w) {
+        return String.fromCharCode(parseInt(w) + charCodeZero);
+    });
 };
-    /* end other */
+/* end other */
 
 /* Start Formatting
 ---------------------------------------------------------------------------------*/
