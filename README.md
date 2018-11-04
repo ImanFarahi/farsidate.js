@@ -1,65 +1,66 @@
-# persiandate.js
+# farsdate.js
 Javascript Persian Date Extension
+WebSite:http://farsidate.ir
 version: 0.0.1
 
 
-Persian Date
+Farsi Date
 ==============
 size: 6 KB 
 
 ## Browser
 
 ```html
-<script src="./persiandate-0.0.1.min.js" type="text/javascript"></script>
+<script src="./farsidate-1.0.0.min.js" type="text/javascript"></script>
 
 <p id="demo"></p>
 
 <script type="text/javascript">
-   var date = new Date().jFormat('yyyy'); // 1397 
+   var date = new Date().fDFormat('yyyy'); // 1397 
   document.getElementById("demo").innerHTML = date;
 </script>
 
 ```
 
 ## example
-### jFormat function
+### fDFormat function
 ```javascript
 var myDate = new Date();
-myDate.jFormat('yy'); //   97
-myDate.jFormat('yyyy'); //  1397
-myDate.jFormat('d'); //   5
-myDate.jFormat('dd'); //   05
-myDate.jFormat('ddd'); //   د
-myDate.jFormat('dddd'); //   دوشنبه
-myDate.jFormat('M'); //  1
-myDate.jFormat('MM'); //  01
-myDate.jFormat('MMM'); //  فرو
-myDate.jFormat('MMMM'); //  فروردین
+myDate.fDFormat('yy'); //   97
+myDate.fDFormat('yyyy'); //  1397
+myDate.fDFormat('d'); //   5
+myDate.fDFormat('dd'); //   05
+myDate.fDFormat('ddd'); //   د
+myDate.fDFormat('dddd'); //   دوشنبه
+myDate.fDFormat('M'); //  1
+myDate.fDFormat('MM'); //  01
+myDate.fDFormat('MMM'); //  فرو
+myDate.fDFormat('MMMM'); //  فروردین
 ```
-### toJalali function
+### toFarsiDate function
 ```javascript
   var jy, jm, jd;
-  [jy, jm, jd] = new Date().toJalali(); // jy=1397, jm= 7, jd= 15
+  [jy, jm, jd] = new Date().toFarsiDate(); // jy=1397, jm= 7, jd= 15
 ```
-### jalaliToDate function
+### farsiDateTo function
 ```javascript
-  var date = new Date().jalaliToDate(1397,7,15); // date=  Wed Nov 07 2018 17:39:44 GMT+0330 (Iran Standard Time)
+  var date = new Date().farsiDateTo(1397,7,15); // date=  Wed Nov 07 2018 17:39:44 GMT+0330 (Iran Standard Time)
 ```
-### jLeap function
+### fDLeap function
 ```javascript
-  new Date().jLeap(1397); // false
+  new Date().fDLeap(1397); // false
 ```
 ### leap function
 ```javascript
   new Date().leap(); // false
 ```
-### jGetDay function
+### fDGetDay function
 ```javascript
-  new Date().jGetDay(); // int: 2
+  new Date().fDGetDay(); // int: 2
 ```
-### jDaysInMonth function
+### fDDaysInMonth function
 ```javascript
-  new Date().jDaysInMonth(); // int: 30
+  new Date().fDDaysInMonth(); // int: 30
 ```
 ### addDays function
 ```javascript
@@ -77,38 +78,38 @@ myDate.jFormat('MMMM'); //  فروردین
 ```javascript
   new Date().startOfWeek(); // Sun Oct 07 2018 17:46:19 GMT+0330 (Iran Standard Time)
 ```
-### jStartOfWeek function
+### fDStartOfWeek function
 ```javascript
-  new Date().jStartOfWeek(); // Sat Oct 06 2018 17:47:28 GMT+0330 (Iran Standard Time)
+  new Date().fDStartOfWeek(); // Sat Oct 06 2018 17:47:28 GMT+0330 (Iran Standard Time)
 ```
 
-### jStartOfMonth function
+### fDStartOfMonth function
 ```javascript
-new Date('2018-11-04').jStartOfMonth(); // Date 2018-10-23T00:00:00.000Z
+new Date('2018-11-04').fDStartOfMonth(); // Date 2018-10-23T00:00:00.000Z
 ```
 
 ### clone function
 ```javascript
   new Date().clone(); 
   var today= new Date()
-  var sat = today.clone().jStartOfWeek().addWeek(1);
+  var sat = today.clone().fDStartOfWeek().addWeek(1);
    // Sat: Sat Oct 13 2018 17:49:33 GMT+0330 (Iran Standard Time)
    // today:Sun Oct 07 2018 17:49:33 GMT+0330 (Iran Standard Time)
 ```
-### jGetDaysOfWeek function
+### fDGetDaysOfWeek function
 ```javascript
   var Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri;
-  [Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri] = new Date().jGetDaysOfWeek(); 
+  [Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri] = new Date().fDGetDaysOfWeek(); 
 ```
-### jGetDaysOfMonth function
+### fDGetDaysOfMonth function
 ```javascript
 var w1 ,w2 ,w3 ,w4 ,w5 ,w6;
-[w1 ,w2 ,w3 ,w4 ,w5 ,w6] = new Date().jGetDaysOfMonth();
+[w1 ,w2 ,w3 ,w4 ,w5 ,w6] = new Date().fDGetDaysOfMonth();
 ```
 
 ### toPersianDigits function
 ```javascript
-new Date().jFormat('ddd. d MMMM yyyy').toPersianDigits() // س. ۱۷ مهر ۱۳۹۷ 
+new Date().fDFormat('ddd. d MMMM yyyy').toPersianDigits() // س. ۱۷ مهر ۱۳۹۷ 
 '1234'.toPersianDigits() // ۱۲۳۴
 ```
 ### isDate function
