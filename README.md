@@ -3,7 +3,7 @@ Javascript Farsi Date Extension
 <br />
 WebSite: http://farsidate.ir
 <br />
-version: 0.0.1
+version: 1.0.0
 
 
 Farsi Date
