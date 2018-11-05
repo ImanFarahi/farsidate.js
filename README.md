@@ -41,8 +41,8 @@ myDate.fDFormat('MMMM'); //  فروردین
 ```
 ### toFarsiDate function
 ```javascript
-  var jy, jm, jd;
-  [jy, jm, jd] = new Date().toFarsiDate(); // jy=1397, jm= 7, jd= 15
+  var y, m, d;
+  [y, m, d] = new Date().toFarsiDate(); // y=1397, m= 7, d= 15
 ```
 ### farsiDateTo function
 ```javascript
