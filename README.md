@@ -25,19 +25,19 @@ size: 6 KB
 ```
 
 ## example
-### fDFormat function
+### faFormat function
 ```javascript
 var myDate = new Date();
-myDate.fDFormat('yy'); //   97
-myDate.fDFormat('yyyy'); //  1397
-myDate.fDFormat('d'); //   5
-myDate.fDFormat('dd'); //   05
-myDate.fDFormat('ddd'); //   د
-myDate.fDFormat('dddd'); //   دوشنبه
-myDate.fDFormat('M'); //  1
-myDate.fDFormat('MM'); //  01
-myDate.fDFormat('MMM'); //  فرو
-myDate.fDFormat('MMMM'); //  فروردین
+myDate.faFormat('yy'); //   97
+myDate.faFormat('yyyy'); //  1397
+myDate.faFormat('d'); //   5
+myDate.faFormat('dd'); //   05
+myDate.faFormat('ddd'); //   د
+myDate.faFormat('dddd'); //   دوشنبه
+myDate.faFormat('M'); //  1
+myDate.faFormat('MM'); //  01
+myDate.faFormat('MMM'); //  فرو
+myDate.faFormat('MMMM'); //  فروردین
 ```
 ### toFarsiDate function
 ```javascript
@@ -48,21 +48,21 @@ myDate.fDFormat('MMMM'); //  فروردین
 ```javascript
   var date = new Date().farsiDateTo(1397,7,15); // date=  Wed Nov 07 2018 17:39:44 GMT+0330 (Iran Standard Time)
 ```
-### fDLeap function
+### faLeap function
 ```javascript
-  new Date().fDLeap(1397); // false
+  new Date().faLeap(1397); // false
 ```
 ### leap function
 ```javascript
   new Date().leap(); // false
 ```
-### fDGetDay function
+### faGetDay function
 ```javascript
-  new Date().fDGetDay(); // int: 2
+  new Date().faGetDay(); // int: 2
 ```
-### fDDaysInMonth function
+### faDaysInMonth function
 ```javascript
-  new Date().fDDaysInMonth(); // int: 30
+  new Date().faDaysInMonth(); // int: 30
 ```
 ### addDays function
 ```javascript
@@ -80,39 +80,39 @@ myDate.fDFormat('MMMM'); //  فروردین
 ```javascript
   new Date().startOfWeek(); // Sun Oct 07 2018 17:46:19 GMT+0330 (Iran Standard Time)
 ```
-### fDStartOfWeek function
+### faStartOfWeek function
 ```javascript
-  new Date().fDStartOfWeek(); // Sat Oct 06 2018 17:47:28 GMT+0330 (Iran Standard Time)
+  new Date().faStartOfWeek(); // Sat Oct 06 2018 17:47:28 GMT+0330 (Iran Standard Time)
 ```
 
-### fDStartOfMonth function
+### faStartOfMonth function
 ```javascript
-new Date('2018-11-04').fDStartOfMonth(); // Date 2018-10-23T00:00:00.000Z
+new Date('2018-11-04').faStartOfMonth(); // Date 2018-10-23T00:00:00.000Z
 ```
 
 ### clone function
 ```javascript
   new Date().clone(); 
   var today= new Date()
-  var sat = today.clone().fDStartOfWeek().addWeek(1);
+  var sat = today.clone().faStartOfWeek().addWeek(1);
    // Sat: Sat Oct 13 2018 17:49:33 GMT+0330 (Iran Standard Time)
    // today:Sun Oct 07 2018 17:49:33 GMT+0330 (Iran Standard Time)
 ```
-### fDGetDaysOfWeek function
+### faGetDaysOfWeek function
 ```javascript
   var Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri;
-  [Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri] = new Date().fDGetDaysOfWeek(); 
+  [Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri] = new Date().faGetDaysOfWeek(); 
 ```
-### fDGetDaysOfMonth function
+### faGetDaysOfMonth function
 ```javascript
 var w1 ,w2 ,w3 ,w4 ,w5 ,w6;
-[w1 ,w2 ,w3 ,w4 ,w5 ,w6] = new Date().fDGetDaysOfMonth();
+[w1 ,w2 ,w3 ,w4 ,w5 ,w6] = new Date().faGetDaysOfMonth();
 ```
 
-### toPersianDigits function
+### toFarsiDigits function
 ```javascript
-new Date().fDFormat('ddd. d MMMM yyyy').toPersianDigits() // س. ۱۷ مهر ۱۳۹۷ 
-'1234'.toPersianDigits() // ۱۲۳۴
+new Date().faFormat('ddd. d MMMM yyyy').toFarsiDigits() // س. ۱۷ مهر ۱۳۹۷ 
+'1234'.toFarsiDigits() // ۱۲۳۴
 ```
 ### isDate function
 ```javascript
