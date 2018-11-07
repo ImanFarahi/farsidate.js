@@ -5,46 +5,46 @@
  * farsidate-1.0.0.js
  * website: http://farsidate.ir
  * email: professionalprogrammer.ir@gmail.com
- * fD = farsiDate
+ * fa = farsi = persian
  */
 Date.prototype.toFarsiDate = function() {
-    var gy, gm, gd, gy2, g_d_m, fDY, fDM, fDD, days;
+    var gy, gm, gd, gy2, g_d_m, faY, faM, faD, days;
     gy = this.getFullYear();
     gm = this.getMonth() + 1;
     gd = this.getDate();
     g_d_m = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
     if (gy > 1600) {
-        fDY = 979;
+        faY = 979;
         gy -= 1600;
     } else {
-        fDY = 0;
+        faY = 0;
         gy -= 621;
     }
     gy2 = (gm > 2) ? (gy + 1) : gy;
     days = (365 * gy) + (parseInt((gy2 + 3) / 4)) - (parseInt((gy2 + 99) / 100)) + (parseInt((gy2 + 399) / 400)) - 80 + gd + g_d_m[gm - 1];
-    fDY += 33 * (parseInt(days / 12053));
+    faY += 33 * (parseInt(days / 12053));
     days %= 12053;
-    fDY += 4 * (parseInt(days / 1461));
+    faY += 4 * (parseInt(days / 1461));
     days %= 1461;
     if (days > 365) {
-        fDY += parseInt((days - 1) / 365);
+        faY += parseInt((days - 1) / 365);
         days = (days - 1) % 365;
     }
-    fDM = (days < 186) ? 1 + parseInt(days / 31) : 7 + parseInt((days - 186) / 30);
-    fDD = 1 + ((days < 186) ? (days % 31) : ((days - 186) % 30));
+    faM = (days < 186) ? 1 + parseInt(days / 31) : 7 + parseInt((days - 186) / 30);
+    faD = 1 + ((days < 186) ? (days % 31) : ((days - 186) % 30));
 
-    return [fDY, fDM, fDD];
+    return [faY, faM, faD];
 };
 
-Date.prototype.farsiDateTo = function(fDY, fDM, fDD) {
+Date.prototype.farsiDateTo = function(faY, faM, faD) {
     var gy, gm, gd, days, sal_a, v;
-    if (fDY > 979) {
+    if (faY > 979) {
         gy = 1600;
-        fDY -= 979;
+        faY -= 979;
     } else {
         gy = 621;
     }
-    days = (365 * fDY) + ((parseInt(fDY / 33)) * 8) + (parseInt(((fDY % 33) + 3) / 4)) + 78 + fDD + ((fDM < 7) ? (fDM - 1) * 31 : ((fDM - 7) * 30) + 186);
+    days = (365 * faY) + ((parseInt(faY / 33)) * 8) + (parseInt(((faY % 33) + 3) / 4)) + 78 + faD + ((faM < 7) ? (faM - 1) * 31 : ((faM - 7) * 30) + 186);
     gy += 400 * (parseInt(days / 146097));
     days %= 146097;
     if (days > 36524) {
@@ -68,15 +68,15 @@ Date.prototype.farsiDateTo = function(fDY, fDM, fDD) {
     return this.setFullYear(gy) && this.setMonth(gm - 1) && this.setDate(gd) && this;
 };
 
-Date.prototype.fDLeap = function(fDY) {
-    return ((fDY - (fDY > 0 ? 474 : 473)) % 2820 + 474 + 38) * 682 % 2816 < 682;
+Date.prototype.faLeap = function(faY) {
+    return ((faY - (faY > 0 ? 474 : 473)) % 2820 + 474 + 38) * 682 % 2816 < 682;
 };
 
 Date.prototype.leap = function() {
     return this.getFullYear() % 4 === 0 && !(this.getFullYear() % 100 === 0 && this.getFullYear() % 400 !== 0);
 };
 
-Date.prototype.fDGetDay = function() {
+Date.prototype.faGetDay = function() {
     if (this.getDay() + 2 === 8) {
         return 1;
     } else if (this.getDay() + 2 === 7) {
@@ -86,21 +86,21 @@ Date.prototype.fDGetDay = function() {
     }
 };
 
-Date.prototype.fDDaysInMonth = function() {
-    var fDY, fDM;
-    [fDY, fDM, ] = this.toFarsiDate();
-    if (fDM < 1 || fDM > 12) return 0;
-    if (fDM < 7) return 31;
-    if (fDM < 12) return 30;
-    if (this.fDLeap(fDY)) {
+Date.prototype.faDaysInMonth = function() {
+    var faY, faM;
+    [faY, faM, ] = this.toFarsiDate();
+    if (faM < 1 || faM > 12) return 0;
+    if (faM < 7) return 31;
+    if (faM < 12) return 30;
+    if (this.faLeap(faY)) {
         return 30;
     }
     return 29;
 };
-Date.prototype.fDStartOfMonth = function() {
-    var fDY, fDM;
-    [fDY, fDM, ] = this.toFarsiDate();
-    return this.FarsiDateTo(fDY, fDM, 1);
+Date.prototype.faStartOfMonth = function() {
+    var faY, faM;
+    [faY, faM, ] = this.toFarsiDate();
+    return this.FarsiDateTo(faY, faM, 1);
 };
 Date.prototype.addDays = function(days) {
     return this.setTime(864E5 * days + this.valueOf()) && this;
@@ -113,7 +113,7 @@ Date.prototype.startOfWeek = function(p) {
     return this.addDays(((this.getDay() < 6) ? (this.getDay() * -1 - p) : 0)) && this;
 };
 
-Date.prototype.fDStartOfWeek = function() {
+Date.prototype.faStartOfWeek = function() {
     return this.startOfWeek(1);
 };
 
@@ -121,31 +121,31 @@ Date.prototype.clone = function() {
     return new Date(this.getTime());
 };
 
-Date.prototype.fDGetDaysOfMonth = function() {
-    var fd, dim, d, out;
-    fd = this.clone().fDStartOfMonth();
-    out = [fd.fDGetDaysOfWeek(),
-        fd.clone().addWeek(1).fDGetDaysOfWeek(),
-        fd.clone().addWeek(2).fDGetDaysOfWeek(),
-        fd.clone().addWeek(3).fDGetDaysOfWeek(),
-        fd.clone().addWeek(4).fDGetDaysOfWeek()
+Date.prototype.faGetDaysOfMonth = function() {
+    var firstDay, dim, day, out;
+    firstDay = this.clone().faStartOfMonth();
+    out = [firstDay.faGetDaysOfWeek(),
+        firstDay.clone().addWeek(1).faGetDaysOfWeek(),
+        firstDay.clone().addWeek(2).faGetDaysOfWeek(),
+        firstDay.clone().addWeek(3).faGetDaysOfWeek(),
+        firstDay.clone().addWeek(4).faGetDaysOfWeek()
     ];
-    dim = fd.fDDaysInMonth();
-    d = fd.fDGetDay();
-    if ((d == 6 && dim == 31) || (d == 0 && dim >= 30)) {
-        out.push(fd.clone().addWeek(5).fDGetDaysOfWeek());
+    dim = firstDay.faDaysInMonth();
+    day = firstDay.faGetDay();
+    if ((day == 6 && dim == 31) || (day == 0 && dim >= 30)) {
+        out.push(firstDay.clone().addWeek(5).faGetDaysOfWeek());
     }
     return out;
 };
 
-Date.prototype.fDGetDaysOfWeek = function() {
-    var Sat = this.clone().fDStartOfWeek();
+Date.prototype.faGetDaysOfWeek = function() {
+    var Sat = this.clone().faStartOfWeek();
     return [Sat, Sat.clone().addDays(1), Sat.clone().addDays(2),
         Sat.clone().addDays(3), Sat.clone().addDays(4), Sat.clone().addDays(5), Sat.clone().addDays(6)
     ];
 };
 
-Date.prototype.fDFormat = function(format) {
+Date.prototype.faFormat = function(format) {
     return _format(format, this, 'fa') || this;
 };
 
@@ -154,7 +154,7 @@ Date.isDate = function(input) {
 };
 
 /* start other */
-String.prototype.toPersianDigits = function() {
+String.prototype.toFarsiDigits = function() {
     var charCodeZero = '۰'.charCodeAt(0);
     return this.replace(/[0-9]/g, function(w) {
         return String.fromCharCode(parseInt(w) + charCodeZero);
@@ -238,9 +238,9 @@ function _getTokenReplacement(token, date, lang) {
             case 'dd':
                 return _zeroPad(date.toFarsiDate()[2]);
             case 'ddd':
-                return locales.fa.dayNamesShort[date.fDGetDay() - 1];
+                return locales.fa.dayNamesShort[date.faGetDay() - 1];
             case 'dddd':
-                return locales.fa.dayNames[date.fDGetDay() - 1];
+                return locales.fa.dayNames[date.faGetDay() - 1];
             case 'M':
                 return date.toFarsiDate()[1];
             case 'MM':
