@@ -18,7 +18,7 @@ size: 6 KB
 <p id="demo"></p>
 
 <script type="text/javascript">
-   var date = new Date().fDFormat('yyyy'); // 1397 
+   var date = new Date().faFormat('yyyy'); // 1397 
   document.getElementById("demo").innerHTML = date;
 </script>
 
