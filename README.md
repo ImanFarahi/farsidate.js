@@ -13,7 +13,7 @@ size: 6 KB
 ## Browser
 
 ```html
-<script src="./farsidate-1.0.0.min.js" type="text/javascript"></script>
+<script src="./dist/farsidate-1.0.0.min.js" type="text/javascript"></script>
 
 <p id="demo"></p>
 
@@ -60,20 +60,38 @@ myDate.faFormat('MMMM'); //  فروردین
 ```javascript
   new Date().faGetDay(); // int: 2
 ```
+
+### daysInMonth function
+```javascript
+  new Date().daysInMonth(); // int: 30
+```
+
 ### faDaysInMonth function
 ```javascript
   new Date().faDaysInMonth(); // int: 30
 ```
+
 ### addDays function
 ```javascript
   new Date().addDays(2); // Tue Oct 09 2018 17:43:54 GMT+0330 (Iran Standard Time)
 ```
 
-### addWeek function
+### addWeeks function
 ```javascript
-  new Date().addWeek(1); // Sun Oct 14 2018 17:44:45 GMT+0330 (Iran Standard Time)
-  new Date().addWeek(0); // Sun Oct 07 2018 17:45:15 GMT+0330 (Iran Standard Time)
-  new Date().addWeek(-1); // Sun Sep 30 2018 17:44:28 GMT+0330 (Iran Standard Time)
+  new Date().addWeeks(1); // Sun Oct 14 2018 17:44:45 GMT+0330 (Iran Standard Time)
+  new Date().addWeeks(0); // Sun Oct 07 2018 17:45:15 GMT+0330 (Iran Standard Time)
+  new Date().addWeeks(-1); // Sun Sep 30 2018 17:44:28 GMT+0330 (Iran Standard Time)
+```
+### addMonths function
+```javascript
+   var date= new Date('2018-11-12');
+   date.addMonths(2); // 2018-01-12
+```
+
+### addYears function
+```javascript
+   var date= new Date('2018-11-12');
+   new Date().addYears(2); // 2020-01-12
 ```
 
 ### startOfWeek function
