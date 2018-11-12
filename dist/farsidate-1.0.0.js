@@ -105,7 +105,7 @@ Date.prototype.faDaysInMonth = function() {
 Date.prototype.faStartOfMonth = function() {
     var faY, faM;
     [faY, faM, ] = this.toFarsiDate();
-    return this.FarsiDateTo(faY, faM, 1);
+    return this.farsiDateTo(faY, faM, 1);
 };
 
 Date.prototype.addDays = function(days) {
@@ -140,15 +140,15 @@ Date.prototype.faGetDaysOfMonth = function() {
     var firstDay, dim, day, out;
     firstDay = this.clone().faStartOfMonth();
     out = [firstDay.faGetDaysOfWeek(),
-        firstDay.clone().addWeek(1).faGetDaysOfWeek(),
-        firstDay.clone().addWeek(2).faGetDaysOfWeek(),
-        firstDay.clone().addWeek(3).faGetDaysOfWeek(),
-        firstDay.clone().addWeek(4).faGetDaysOfWeek()
+        firstDay.clone().addWeeks(1).faGetDaysOfWeek(),
+        firstDay.clone().addWeeks(2).faGetDaysOfWeek(),
+        firstDay.clone().addWeeks(3).faGetDaysOfWeek(),
+        firstDay.clone().addWeeks(4).faGetDaysOfWeek()
     ];
     dim = firstDay.faDaysInMonth();
     day = firstDay.faGetDay();
     if ((day == 6 && dim == 31) || (day == 0 && dim >= 30)) {
-        out.push(firstDay.clone().addWeek(5).faGetDaysOfWeek());
+        out.push(firstDay.clone().addWeeks(5).faGetDaysOfWeek());
     }
     return out;
 };
