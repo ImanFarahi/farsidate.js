@@ -7,44 +7,63 @@
  * email: professionalprogrammer.ir@gmail.com
  * fa = farsi = persian
  */
-Date.prototype.toFarsiDate = function() {
-    var gy, gm, gd, gy2, g_d_m, faY, faM, faD, days;
+
+/*
+Calculates the Jalali Date from Current Date Object.
+
+    @return 
+        faYear: Jalali Year
+        faMonth: Jalali Month
+        faDate: Jalali Date
+*/
+Date.prototype.toFarsiDate = function () {
+    var gy, gm, gd, gy2, g_d_m, faYear, faMonth, faDate, days;
     gy = this.getFullYear();
     gm = this.getMonth() + 1;
     gd = this.getDate();
     g_d_m = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
     if (gy > 1600) {
-        faY = 979;
+        faYear = 979;
         gy -= 1600;
     } else {
-        faY = 0;
+        faYear = 0;
         gy -= 621;
     }
     gy2 = (gm > 2) ? (gy + 1) : gy;
     days = (365 * gy) + (parseInt((gy2 + 3) / 4)) - (parseInt((gy2 + 99) / 100)) + (parseInt((gy2 + 399) / 400)) - 80 + gd + g_d_m[gm - 1];
-    faY += 33 * (parseInt(days / 12053));
+    faYear += 33 * (parseInt(days / 12053));
     days %= 12053;
-    faY += 4 * (parseInt(days / 1461));
+    faYear += 4 * (parseInt(days / 1461));
     days %= 1461;
     if (days > 365) {
-        faY += parseInt((days - 1) / 365);
+        faYear += parseInt((days - 1) / 365);
         days = (days - 1) % 365;
     }
-    faM = (days < 186) ? 1 + parseInt(days / 31) : 7 + parseInt((days - 186) / 30);
-    faD = 1 + ((days < 186) ? (days % 31) : ((days - 186) % 30));
+    faMonth = (days < 186) ? 1 + parseInt(days / 31) : 7 + parseInt((days - 186) / 30);
+    faDate = 1 + ((days < 186) ? (days % 31) : ((days - 186) % 30));
 
-    return [faY, faM, faD];
+    return {
+        faYear, faMonth, faDate
+    };
 };
 
-Date.prototype.farsiDateTo = function(faY, faM, faD) {
+/*
+Calculates the Date Object from Jalali Date.
+
+    @param faYear Jalaali year (\d{4})
+    @param faMonth Jalaali month (1 to 12)
+    @param faDate Jalaali day (1 to 29/31)
+    @return Current Object
+*/
+Date.prototype.farsiDateTo = function (faYear, faMonth, faDate) {
     var gy, gm, gd, days, sal_a, v;
-    if (faY > 979) {
+    if (faYear > 979) {
         gy = 1600;
-        faY -= 979;
+        faYear -= 979;
     } else {
         gy = 621;
     }
-    days = (365 * faY) + ((parseInt(faY / 33)) * 8) + (parseInt(((faY % 33) + 3) / 4)) + 78 + faD + ((faM < 7) ? (faM - 1) * 31 : ((faM - 7) * 30) + 186);
+    days = (365 * faYear) + ((parseInt(faYear / 33)) * 8) + (parseInt(((faYear % 33) + 3) / 4)) + 78 + faDate + ((faMonth < 7) ? (faMonth - 1) * 31 : ((faMonth - 7) * 30) + 186);
     gy += 400 * (parseInt(days / 146097));
     days %= 146097;
     if (days > 36524) {
@@ -68,15 +87,16 @@ Date.prototype.farsiDateTo = function(faY, faM, faD) {
     return this.setFullYear(gy) && this.setMonth(gm - 1) && this.setDate(gd) && this;
 };
 
-Date.prototype.faLeap = function(faY) {
-    return ((faY - (faY > 0 ? 474 : 473)) % 2820 + 474 + 38) * 682 % 2816 < 682;
+Date.prototype.faIsLeap = function () {
+    var faYear = this.toFarsiDate().faYear;
+    return ((faYear - (faYear > 0 ? 474 : 473)) % 2820 + 474 + 38) * 682 % 2816 < 682;
 };
 
-Date.prototype.leap = function() {
+Date.prototype.isLeap = function () {
     return this.getFullYear() % 4 === 0 && !(this.getFullYear() % 100 === 0 && this.getFullYear() % 400 !== 0);
 };
 
-Date.prototype.faGetDay = function() {
+Date.prototype.faGetDay = function () {
     if (this.getDay() + 2 === 8) {
         return 1;
     } else if (this.getDay() + 2 === 7) {
@@ -86,66 +106,90 @@ Date.prototype.faGetDay = function() {
     }
 };
 
-Date.prototype.daysInMonth = function() {
-    return [31, (this.leap(this.getFullYear()) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][this.getMonth()];
+Date.prototype.getDaysInMonth = function () {
+    return [31, (this.isLeap(this.getFullYear()) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][this.getMonth()];
 };
 
-Date.prototype.faDaysInMonth = function() {
-    var faY, faM;
-    [faY, faM, ] = this.toFarsiDate();
-    if (faM < 1 || faM > 12) return 0;
-    if (faM < 7) return 31;
-    if (faM < 12) return 30;
-    if (this.faLeap(faY)) {
+Date.prototype.faGetDaysInMonth = function () {
+    var faMonth = this.toFarsiDate().faMonth;
+    if (faMonth < 1 || faMonth > 12) return 0;
+    if (faMonth < 7) return 31;
+    if (faMonth < 12) return 30;
+    if (this.faIsLeap()) {
         return 30;
     }
     return 29;
 };
 
-Date.prototype.faStartOfMonth = function() {
-    var faY, faM;
-    [faY, faM, ] = this.toFarsiDate();
-    return this.farsiDateTo(faY, faM, 1);
+Date.prototype.faStartOfMonth = function () {
+    var fD = this.toFarsiDate();
+    return this.farsiDateTo(fD.faYear, fD.faMonth, 1);
 };
 
-Date.prototype.addDays = function(days) {
+Date.prototype.addDays = function (days) {
     return this.setTime(864E5 * days + this.valueOf()) && this;
 };
 
-Date.prototype.addWeeks = function(weeks) {
+Date.prototype.addWeeks = function (weeks) {
     return this.addDays(weeks * 7) && this;
 };
 
-Date.prototype.addMonths = function(months) {
-    return this.setMonth(this.getMonth() + months) && this.setDate(Math.min(this.getDate(), this.daysInMonth())) && this;
+Date.prototype.addMonths = function (months) {
+    var sumM, newM, newY, d = this.getDate();
+    sumM = months + (this.getMonth() + 1);
+    newY = Math.floor(sumM / 12);
+    newM = sumM - (newY * 12);
+    newY += this.getFullYear();
+    if (newM == 0) {
+        newM = 12;
+        newY--;
+    }
+    return this.setDate(1) && this.setMonth((newM - 1)) && this.setFullYear(newY) && this.setDate(Math.min(d, this.getDaysInMonth())) && this;
 };
 
-Date.prototype.addYears = function(years) {
+Date.prototype.addYears = function (years) {
     return this.addMonths(years * 12) && this;
 };
 
-Date.prototype.startOfWeek = function(p) {
+Date.prototype.faAddMonths = function (months) {
+    var sumM, newFaM, newFaY, fD = this.toFarsiDate();
+    sumM = months + fD.faMonth;
+    newFaY = Math.floor(sumM / 12);
+    newFaM = sumM - (newFaY * 12);
+    newFaY += fD.faYear;
+    if (newFaM == 0) {
+        newFaM = 12;
+        newFaY--;
+    }
+    return this.farsiDateTo(newFaY, newFaM, 1) && this.farsiDateTo(newFaY, newFaM, Math.min(fD.faDate, this.faGetDaysInMonth())) && this;
+};
+
+Date.prototype.faAddYears = function (years) {
+    return this.faAddMonths(years * 12) && this;
+};
+
+Date.prototype.startOfWeek = function (p) {
     return this.addDays(((this.getDay() < 6) ? (this.getDay() * -1 - p) : 0)) && this;
 };
 
-Date.prototype.faStartOfWeek = function() {
+Date.prototype.faStartOfWeek = function () {
     return this.startOfWeek(1);
 };
 
-Date.prototype.clone = function() {
+Date.prototype.clone = function () {
     return new Date(this.getTime());
 };
 
-Date.prototype.faGetDaysOfMonth = function() {
+Date.prototype.faGetDaysOfMonth = function () {
     var firstDay, dim, day, out;
     firstDay = this.clone().faStartOfMonth();
     out = [firstDay.faGetDaysOfWeek(),
-        firstDay.clone().addWeeks(1).faGetDaysOfWeek(),
-        firstDay.clone().addWeeks(2).faGetDaysOfWeek(),
-        firstDay.clone().addWeeks(3).faGetDaysOfWeek(),
-        firstDay.clone().addWeeks(4).faGetDaysOfWeek()
+    firstDay.clone().addWeeks(1).faGetDaysOfWeek(),
+    firstDay.clone().addWeeks(2).faGetDaysOfWeek(),
+    firstDay.clone().addWeeks(3).faGetDaysOfWeek(),
+    firstDay.clone().addWeeks(4).faGetDaysOfWeek()
     ];
-    dim = firstDay.faDaysInMonth();
+    dim = firstDay.faGetDaysInMonth();
     day = firstDay.faGetDay();
     if ((day == 6 && dim == 31) || (day == 0 && dim >= 30)) {
         out.push(firstDay.clone().addWeeks(5).faGetDaysOfWeek());
@@ -153,25 +197,33 @@ Date.prototype.faGetDaysOfMonth = function() {
     return out;
 };
 
-Date.prototype.faGetDaysOfWeek = function() {
+Date.prototype.faGetDaysOfWeek = function () {
     var Sat = this.clone().faStartOfWeek();
     return [Sat, Sat.clone().addDays(1), Sat.clone().addDays(2),
         Sat.clone().addDays(3), Sat.clone().addDays(4), Sat.clone().addDays(5), Sat.clone().addDays(6)
     ];
 };
 
-Date.prototype.faFormat = function(format) {
+Date.prototype.faFormat = function (format) {
     return _format(format, this, 'fa') || this;
 };
 
-Date.isDate = function(input) {
+Date.isDate = function (input) {
     return input instanceof Date || Object.prototype.toString.call(input) === '[object Date]';
 };
 
+Date.prototype.toISODate = function () {
+    return (this.getFullYear() + '-' + (this.getMonth() + 1) + '-' + this.getDate());
+};
+
+Date.prototype.faToISODate = function () {
+    return this.faFormat('yyyy-MM-dd');
+};
+
 /* start other */
-String.prototype.toFarsiDigits = function() {
+String.prototype.toFarsiDigits = function () {
     var charCodeZero = '۰'.charCodeAt(0);
-    return this.replace(/[0-9]/g, function(w) {
+    return this.replace(/[0-9]/g, function (w) {
         return String.fromCharCode(parseInt(w) + charCodeZero);
     });
 };
@@ -249,25 +301,25 @@ function _getTokenReplacement(token, date, lang) {
     if (lang == 'fa') {
         switch (token) {
             case 'd':
-                return date.toFarsiDate()[2];
+                return date.toFarsiDate().faDate;
             case 'dd':
-                return _zeroPad(date.toFarsiDate()[2]);
+                return _zeroPad(date.toFarsiDate().faDate);
             case 'ddd':
                 return locales.fa.dayNamesShort[date.faGetDay() - 1];
             case 'dddd':
                 return locales.fa.dayNames[date.faGetDay() - 1];
             case 'M':
-                return date.toFarsiDate()[1];
+                return date.toFarsiDate().faMonth;
             case 'MM':
-                return _zeroPad(date.toFarsiDate()[1]);
+                return _zeroPad(date.toFarsiDate().faMonth);
             case 'MMM':
-                return locales.fa.monthNamesShort[date.toFarsiDate()[1] - 1];
+                return locales.fa.monthNamesShort[date.toFarsiDate().faMonth - 1];
             case 'MMMM':
-                return locales.fa.monthNames[date.toFarsiDate()[1] - 1];
+                return locales.fa.monthNames[date.toFarsiDate().faMonth - 1];
             case 'yy':
-                return parseInt((date.toFarsiDate()[0] + '').substring(2));
+                return parseInt((date.toFarsiDate().faYear + '').substring(2));
             case 'yyyy':
-                return date.toFarsiDate()[0];
+                return date.toFarsiDate().faYear;
         }
     }
 }
