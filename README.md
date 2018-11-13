@@ -100,6 +100,7 @@ myDate.faFormat('MMMM'); //  فروردین
    var date= new Date('2018-11-12');
    console.log('before: '+ date.faFormat('yyyy-MM-dd')); // before: 1397-08-21
    console.log('after: '+ date.faAddMonths(2).faFormat('yyyy-MM-dd')); // after: 1397-10-21
+   console.log('back: '+ date.faAddMonths(-2).faFormat('yyyy-MM-dd')); // back: 1397-08-21
 ```
 
 ### faAddYears function
