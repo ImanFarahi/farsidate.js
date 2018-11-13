@@ -41,34 +41,36 @@ myDate.faFormat('MMMM'); //  فروردین
 ```
 ### toFarsiDate function
 ```javascript
-  var y, m, d;
-  [y, m, d] = new Date().toFarsiDate(); // y=1397, m= 7, d= 15
+   var fD = new Date('2018-11-13').toFarsiDate(); // fD.faYear=1397, fD.faMonth= 8, fD.faDate= 222
+   console.log('year: '+ fD.faYear);
+   console.log('month: '+ fD.faMonth);
+   console.log('date: '+ fD.faDate);
 ```
 ### farsiDateTo function
 ```javascript
   var date = new Date().farsiDateTo(1397,7,15); // date=  Wed Nov 07 2018 17:39:44 GMT+0330 (Iran Standard Time)
 ```
-### faLeap function
+### faIsLeap function
 ```javascript
-  new Date().faLeap(1397); // false
+  new Date().faIsLeap(); // false
 ```
-### leap function
+### isLeap function
 ```javascript
-  new Date().leap(); // false
+  new Date().isLeap(); // false
 ```
 ### faGetDay function
 ```javascript
   new Date().faGetDay(); // int: 2
 ```
 
-### daysInMonth function
+### getDaysInMonth function
 ```javascript
-  new Date().daysInMonth(); // int: 30
+  new Date().getDaysInMonth(); // int: 30
 ```
 
-### faDaysInMonth function
+### faGetDaysInMonth function
 ```javascript
-  new Date().faDaysInMonth(); // int: 30
+  new Date().faGetDaysInMonth(); // int: 30
 ```
 
 ### addDays function
@@ -92,6 +94,19 @@ myDate.faFormat('MMMM'); //  فروردین
 ```javascript
    var date= new Date('2018-11-12');
    new Date().addYears(2); // 2020-01-12
+```
+### faAddMonths function
+```javascript
+   var date= new Date('2018-11-12');
+   console.log('before: '+ date.faFormat('yyyy-MM-dd')); // before: 1397-08-21
+   console.log('after: '+ date.faAddMonths(2).faFormat('yyyy-MM-dd')); // after: 1397-10-21
+```
+
+### faAddYears function
+```javascript
+   var date= new Date('2018-11-12');
+   console.log('before: '+ date.faFormat('yyyy-MM-dd')); // before: 1397-08-21
+   console.log('after: '+ date.faAddYears(2).faFormat('yyyy-MM-dd')); // after: 1399-08-21
 ```
 
 ### startOfWeek function
@@ -137,6 +152,16 @@ new Date().faFormat('ddd. d MMMM yyyy').toFarsiDigits() // س. ۱۷ مهر ۱۳�
 Date.isDate("2018-10-11") // false 
 Date.isDate(new Date()) // true 
 Date.isDate(new Date("2018-10-11")) // true
+```
+### toISODate function
+```javascript
+   var date= new Date('11/13/2018');
+   console.log('ISO Date: '+ date.toISODate()); // ISO Date: 2018-11-13
+```
+### faToISODate function
+```javascript
+   var date= new Date('11/13/2018');
+   console.log('ISO Date: '+ date.faToISODate()); // ISO Date: 1397-08-22
 ```
 
 
