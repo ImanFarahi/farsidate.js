@@ -181,20 +181,14 @@ Date.prototype.clone = function () {
 };
 
 Date.prototype.faGetDaysOfMonth = function () {
-    var firstDay, dim, day, out;
-    firstDay = this.clone().faStartOfMonth();
-    out = [firstDay.faGetDaysOfWeek(),
+    var firstDay = this.clone().faStartOfMonth();
+    return [firstDay.clone().faGetDaysOfWeek(),
     firstDay.clone().addWeeks(1).faGetDaysOfWeek(),
     firstDay.clone().addWeeks(2).faGetDaysOfWeek(),
     firstDay.clone().addWeeks(3).faGetDaysOfWeek(),
-    firstDay.clone().addWeeks(4).faGetDaysOfWeek()
+    firstDay.clone().addWeeks(4).faGetDaysOfWeek(),
+    firstDay.clone().addWeeks(5).faGetDaysOfWeek(),
     ];
-    dim = firstDay.faGetDaysInMonth();
-    day = firstDay.faGetDay();
-    if ((day == 6 && dim == 31) || (day == 0 && dim >= 30)) {
-        out.push(firstDay.clone().addWeeks(5).faGetDaysOfWeek());
-    }
-    return out;
 };
 
 Date.prototype.faGetDaysOfWeek = function () {
