@@ -42,9 +42,7 @@ Date.prototype.toFarsiDate = function () {
     faMonth = (days < 186) ? 1 + parseInt(days / 31) : 7 + parseInt((days - 186) / 30);
     faDate = 1 + ((days < 186) ? (days % 31) : ((days - 186) % 30));
 
-    return {
-        faYear, faMonth, faDate
-    };
+    return {'faYear': faYear, 'faMonth': faMonth, 'faDate': faDate};
 };
 
 /*
