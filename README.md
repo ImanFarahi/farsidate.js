@@ -41,7 +41,7 @@ myDate.faFormat('MMMM'); //  فروردین
 ```
 ### toFarsiDate function
 ```javascript
-   var fD = new Date('2018-11-13').toFarsiDate(); // fD.faYear=1397, fD.faMonth= 8, fD.faDate= 222
+   var fD = new Date('2018-11-13').toFarsiDate(); // fD.faYear=1397, fD.faMonth= 8, fD.faDate= 22
    console.log('year: '+ fD.faYear);
    console.log('month: '+ fD.faMonth);
    console.log('date: '+ fD.faDate);
