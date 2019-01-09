@@ -111,8 +111,8 @@ console.log('tt: '+date.fa().toString('tt')); // tt: AM
 | MM | The month of the year with leading zero if required. | "01" to "12" | 
 | MMM | Abbreviated month name. Date.!CultureInfo.abbreviatedMonthNames. | "شهر" to "مرد" | 
 | MMMM | The full month name. Date.!CultureInfo.monthNames. | "شهریور" to "مرداد" | 
-| yy | Displays the year as a two-digit number. | "99" or "07" | 
-| yyyy | Displays the full four digit year. | "1999" or "2007" | 
+| yy | Displays the year as a two-digit number. | "97" or "98" | 
+| yyyy | Displays the full four digit year. | "1397" or "1398" | 
 | t | Displays the first character of the A.M./P.M.  | "A" or "P" | 
 | tt | Displays the A.M./P.M. designator. | "AM" or "PM" |
 
