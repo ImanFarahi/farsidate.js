@@ -257,7 +257,7 @@ console.log(new Date().fa(1397,1,15).addDays(3).addMonths(1).addYears(-1).norm()
 ```
 
 
-## other functions
+## Others function
 all Date methods
 
 
