@@ -8,7 +8,7 @@ version: 1.0.1
 
 Farsi Date
 ==============
-size:  12.3 KB 
+size:  13 KB 
 
 ## Browser
 
