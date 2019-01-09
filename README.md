@@ -141,9 +141,9 @@ console.log(fD.setTimeToNow().getHours()); // 2
    
 ### today function
 ```javascript
-   var fD = new Date().fa().setHours(3); 
-	console.log(fD.getHours()); // 3
-	console.log(fD.today().getHours()); // 0
+var fD = new Date().fa().setHours(3); 
+console.log(fD.getHours()); // 3
+console.log(fD.today().getHours()); // 0
 ```
 
 ### setFullYear function
@@ -178,7 +178,7 @@ console.log(fD.startOfMonth(0).toISODate());  // 1397-02-01 - month (1-12)
 ```javascript  
 var fD = new Date().fa(1397,1,15).addDays(3).addWeeks(1);
 console.log(fD.toString('dd'));  // 25  
- ```
+```
  
  
 ### addMonths function
@@ -186,7 +186,7 @@ console.log(fD.toString('dd'));  // 25
 var fD = new Date().fa(1397,1,15)
 console.log(fD.toString('MM'));  // 02
 console.log(fD.addDays(3).addMonths(1).toString('MM'));  // 03
- ```
+```
    
 ### addYears function
 ```javascript  
@@ -201,7 +201,7 @@ console.log(fD.addDays(3).addMonths(1).addYears(1).toString('yyyy MM'));  // 139
 var fD = new Date().fa(1397,9,19)
 console.log(fD.toString('yyyy MM dd'));  // 1397 10 19
 console.log(fD.startOfWeek().toString('yyyy MM dd'));  // 1397 10 15  
- ```  
+```  
    
 ### clone function
 ```javascript   
