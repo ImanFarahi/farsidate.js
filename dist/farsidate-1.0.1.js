@@ -3,7 +3,7 @@
  * @author: Iman Farahi
  * @version 1.0.1
  * @date: 2019-01-09
- * @copyright: (c) 2018 ImanFarahi - professionalProgrammer.ir 
+ * @copyright: (c) 2018 ImanFarahi - professionalProgrammer.ir
  * @license: MIT License
  * @email: professionalProgrammer.ir@gmail.com 
  * @Website: http://professionalProgrammer.ir
