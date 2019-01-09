@@ -35,7 +35,8 @@
     * @return {String} 
     */
     $P.toISODate = function () {
-        return (this.getFullYear() + '-' + (this.getMonth() + 1) + '-' + this.getDate());
+        var m = (this.getMonth() + 1).toString();
+        return (this.getFullYear() + '-' + (m.length == 1 ? ('0' + m) : m) + '-' + this.getDate());
     };
 
 
