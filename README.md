@@ -87,6 +87,42 @@ console.log('t: '+date.fa().toString('t')); // t: A
 console.log('tt: '+date.fa().toString('tt')); // tt: AM
 ```
 
+#### Converting to String
+
+**Note** The `format` parameter is optional with the `.toString()` function.
+
+**Standard Date and Time Format Specifiers**
+
+| Format | Description | Example |
+| :---- | :---- | :---- |
+| s | The seconds of the minute between 0-59. | "0" to "59" |
+| ss | The seconds of the minute with leading zero if required. | "00" to "59" | 
+| m | The minute of the hour between 0-59. | "0"  or "59" | 
+| mm | The minute of the hour with leading zero if required. | "00" or "59" | 
+| h | The hour of the day between 1-12. | "1"  to "12" | 
+| hh | The hour of the day with leading zero if required. | "01" to "12" | 
+| H | The hour of the day between 0-23. | "0"  to "23" | 
+| HH | The hour of the day with leading zero if required. | "00" to "23" | 
+| d | The day of the month between 1 and 31. | "1"  to "31" | 
+| dd | The day of the month with leading zero if required. | "01" to "31" | 
+| ddd | Abbreviated day name. Date.!CultureInfo.abbreviatedDayNames. | "چ" to "پ" |  
+| dddd | The full day name. Date.!CultureInfo.dayNames. | "چهارشنبه" to "پنج شنبه" | 
+| M | The month of the year between 1-12. | "1" to "12" | 
+| MM | The month of the year with leading zero if required. | "01" to "12" | 
+| MMM | Abbreviated month name. Date.!CultureInfo.abbreviatedMonthNames. | "شهر" to "مرد" | 
+| MMMM | The full month name. Date.!CultureInfo.monthNames. | "شهریور" to "مرداد" | 
+| yy | Displays the year as a two-digit number. | "99" or "07" | 
+| yyyy | Displays the full four digit year. | "1999" or "2007" | 
+| t | Displays the first character of the A.M./P.M.  | "A" or "P" | 
+| tt | Displays the A.M./P.M. designator. | "AM" or "PM" |
+
+
+
+
+
+
+
+
 ### clearTime function
 ```javascript
 var fD = new Date().fa(); 
