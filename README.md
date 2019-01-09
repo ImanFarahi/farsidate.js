@@ -244,9 +244,12 @@ console.log('1234'.toFarsiDigits()); // ۱۲۳۴
 
 ### isDate function
 ```javascript
-Date.isDate("2018-10-11") // false 
-Date.isDate(new Date()) // true 
-Date.isDate(new Date("2018-10-11")) // true
+console.log(Date.isDate("2018-10-11")); // false 
+console.log(Date.isDate(new Date())); // true 
+console.log(Date.isDate(new Date("2018-10-11"))); // true
+
+console.log(Date.fa.isDate(new Date().fa())); // true
+console.log(Date.fa.isDate(new Date())); // false
 ```
 
 
