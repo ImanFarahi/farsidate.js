@@ -34,6 +34,29 @@
 
 
     /**
+        * @description Returns a new Date object that is an exact date and time copy of the original instance.
+        * @method
+        * @public
+        * @return {Date} A new Date instance
+        */
+    $P.clone = function () {
+        return new Date(this.getTime());
+    };
+
+
+    /**
+    * @description  true if object instanceof Date, otherwise false.
+    * @static
+    * @method
+    * @param obj input object 
+    * @return {Boolean} true if object instanceof Date, otherwise false.
+    */
+    $D.isDate = function (obj) {
+        return obj instanceof Date || Object.prototype.toString.call(obj) === '[object Date]';
+    };
+
+
+    /**
     * @description  convert english numbers to farsi numbers
     * @method
     * @public
@@ -45,6 +68,9 @@
             return String.fromCharCode(parseInt(w) + charCodeZero);
         });
     };
+
+
+
 
 
 
@@ -66,7 +92,7 @@
             this.cacheDate = cacheDate;
 
             if (typeof args != 'undefined') {
-                if (args.length == 1 && (args[0] instanceof FarsiDate)) {
+                if (args.length == 1 && (_D.isDate(args[0]))) {
                     this.cacheDate = args[0].getCacheDate();
                 } else if (args.length == 3) {
                     var fD = _D.jalaliToGregorian(args[0], args[1], args[2]);
@@ -90,7 +116,7 @@
          */
         _D.jalaliToGregorian = function (jy, jm, jd) {
             var gy, gm, gd, days, sal_a, v;
-            jm+= 1;
+            jm += 1;
             if (jy > 979) {
                 gy = 1600;
                 jy -= 979;
@@ -156,6 +182,17 @@
             jd = 1 + ((days < 186) ? (days % 31) : ((days - 186) % 30));
 
             return { 'year': jy, 'month': (jm - 1), 'date': jd };
+        };
+
+        /**
+       * @description  true if object instanceof FarsiDate, otherwise false.
+       * @static
+       * @method
+       * @param obj input object 
+       * @return {Boolean} true if object instanceof FarsiDate, otherwise false.
+       */
+        _D.isDate = function (obj) {
+            return obj instanceof FarsiDate || Object.prototype.toString.call(obj) === '[object FarsiDate]';
         };
 
 
@@ -303,7 +340,7 @@
         */
         _P.addMonths = function (months) {
             var sumM, newFaM, newFaY, gD, fD = _D.gregorianToJalali(this.cacheDate.getFullYear(), this.cacheDate.getMonth(), this.cacheDate.getDate())
-            sumM = months + fD.month;
+            sumM = months + (fD.month + 1);
             newFaY = Math.floor(sumM / 12);
             newFaM = sumM - (newFaY * 12);
             newFaY += fD.year;
@@ -311,6 +348,7 @@
                 newFaM = 12;
                 newFaY--;
             }
+            newFaM -= 1;
             gD = _D.jalaliToGregorian(newFaY, newFaM, Math.min(fD.date, _D.getDaysInMonth(newFaY, newFaM)));
             return this.cacheDate.setFullYear(gD.year) && this.cacheDate.setMonth(gD.month) && this.cacheDate.setDate(gD.date) && this;;
         };
@@ -826,19 +864,19 @@
                     case 's':
                         return date.getSeconds();
                     case 'ss':
-                        return _zeroPad(date.getSeconds()+ '');
+                        return _zeroPad(date.getSeconds() + '');
                     case 'm':
                         return date.getMinutes();
                     case 'mm':
-                        return _zeroPad(date.getMinutes()+ '');
+                        return _zeroPad(date.getMinutes() + '');
                     case 'h':
                         return (date.getHours() % 12 || 12);
                     case 'hh':
-                        return _zeroPad((date.getHours() % 12 || 12)+ '');
+                        return _zeroPad((date.getHours() % 12 || 12) + '');
                     case 'H':
                         return date.getHours();
                     case 'HH':
-                        return _zeroPad(date.getHours()+ '');
+                        return _zeroPad(date.getHours() + '');
                     case 'd':
                         return date.getDate();
                     case 'dd':
