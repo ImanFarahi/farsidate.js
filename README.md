@@ -85,6 +85,7 @@ console.log('yy: '+date.fa().toString('yy')); // yy: 97
 console.log('yyyy: '+date.fa().toString('yyyy')); // yyyy: 1397
 console.log('t: '+date.fa().toString('t')); // t: A
 console.log('tt: '+date.fa().toString('tt')); // tt: AM
+console.log(date.fa().toString()); // چ دی 19 1397 04:30:57 GMT+0330 (Iran Standard Time)
 ```
 
 #### Converting to String
@@ -217,10 +218,10 @@ var w1 ,w2 ,w3 ,w4 ,w5 ,w6;
 [w1 ,w2 ,w3 ,w4 ,w5 ,w6] = new Date().fa().getDaysOfMonth();
 ```
    
- ### faGetDaysOfWeek function
+ ### getDaysOfWeek function
 ```javascript
   var Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri;
-  [Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri] = new Date().fa().faGetDaysOfWeek(); 
+  [Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri] = new Date().fa().getDaysOfWeek(); 
 ```
    
    
