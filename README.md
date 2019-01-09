@@ -174,21 +174,21 @@ console.log(fD.startOfMonth(0).toISODate());  // 1397-02-01 - month (1-12)
 	console.log(fD.toString('dd'));  // 17
 ```
    
- ### addWeeks function
+### addWeeks function
 ```javascript  
 var fD = new Date().fa(1397,1,15).addDays(3).addWeeks(1);
 console.log(fD.toString('dd'));  // 25  
  ```
  
  
- ### addMonths function
+### addMonths function
 ```javascript  
 var fD = new Date().fa(1397,1,15)
 console.log(fD.toString('MM'));  // 02
 console.log(fD.addDays(3).addMonths(1).toString('MM'));  // 03
  ```
    
- ### addYears function
+### addYears function
 ```javascript  
 var fD = new Date().fa(1397,1,15)
 console.log(fD.toString('yyyy MM'));  // 1397 02
@@ -203,7 +203,7 @@ console.log(fD.toString('yyyy MM dd'));  // 1397 10 19
 console.log(fD.startOfWeek().toString('yyyy MM dd'));  // 1397 10 15  
  ```  
    
- ### clone function
+### clone function
 ```javascript   
 var fD = new Date().fa(1397,9,19)
 console.log(fD.toString('yyyy MM dd'));  // 1397 10 19
@@ -218,7 +218,7 @@ var w1 ,w2 ,w3 ,w4 ,w5 ,w6;
 [w1 ,w2 ,w3 ,w4 ,w5 ,w6] = new Date().fa().getDaysOfMonth();
 ```
    
- ### getDaysOfWeek function
+### getDaysOfWeek function
 ```javascript
   var Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri;
   [Sat ,Sun ,Mon ,Tue ,Wed ,Thu ,Fri] = new Date().fa().getDaysOfWeek(); 
