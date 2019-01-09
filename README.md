@@ -195,20 +195,24 @@ var fD = new Date().fa(1397,9,19)
 console.log(fD.toString('ddd. d MMMM yyyy').toFarsiDigits()); //چ. ۱۹ دی ۱۳۹۷ 
 console.log('1234'.toFarsiDigits()); // ۱۲۳۴
 ```
+
+
 ### isDate function
 ```javascript
 Date.isDate("2018-10-11") // false 
 Date.isDate(new Date()) // true 
 Date.isDate(new Date("2018-10-11")) // true
 ```
+
+
 ### toISODate function
 ```javascript
-   var date= new Date('11/13/2018');
-   console.log('ISO Date: '+ date.toISODate()); // ISO Date: 2018-11-13
-
-   var date= new Date('11/13/2018');
-   console.log('ISO Date: '+ date.fa().toISODate()); // ISO Date: 1397-08-22
+var date= new Date('11/13/2018');
+console.log('ISO Date: '+ date.toISODate()); // ISO Date: 2018-11-13
+console.log('fa ISO Date: '+ date.fa().toISODate()); // fa ISO Date: 1397-08-22
 ```
+
+
 ## Chaining
 ```javascript
 console.log(new Date().fa(1397,1,15).norm().toISODate());  // 2018-5-5
