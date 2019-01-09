@@ -24,6 +24,14 @@ size:  12.3 KB
 
 ```
 
+
+## Chaining
+```javascript
+console.log(new Date().fa(1397,1,15).norm().toISODate());  // 2018-5-5
+console.log(new Date().fa(1397,1,15).addDays(3).addMonths(1).addYears(-1).norm().toISODate());  // 2017-6-8
+```
+
+
 ## Example Usage
 
 ### fa main function
@@ -247,13 +255,6 @@ Date.isDate(new Date("2018-10-11")) // true
 var date= new Date('11/13/2018');
 console.log('ISO Date: '+ date.toISODate()); // ISO Date: 2018-11-13
 console.log('fa ISO Date: '+ date.fa().toISODate()); // fa ISO Date: 1397-08-22
-```
-
-
-## Chaining
-```javascript
-console.log(new Date().fa(1397,1,15).norm().toISODate());  // 2018-5-5
-console.log(new Date().fa(1397,1,15).addDays(3).addMonths(1).addYears(-1).norm().toISODate());  // 2017-6-8
 ```
 
 
