@@ -174,7 +174,7 @@ console.log(fD.startOfMonth(0).toISODate());  // 1397-02-01 - month (1-12)
 	console.log(fD.toString('dd'));  // 17
 ```
    
- ### addDays function
+ ### addWeeks function
 ```javascript  
 var fD = new Date().fa(1397,1,15).addDays(3).addWeeks(1);
 console.log(fD.toString('dd'));  // 25  
@@ -188,7 +188,7 @@ console.log(fD.toString('MM'));  // 02
 console.log(fD.addDays(3).addMonths(1).toString('MM'));  // 03
  ```
    
- ### addMonths function
+ ### addYears function
 ```javascript  
 var fD = new Date().fa(1397,1,15)
 console.log(fD.toString('yyyy MM'));  // 1397 02
