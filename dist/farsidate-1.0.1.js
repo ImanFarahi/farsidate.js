@@ -12,10 +12,10 @@
 
 "use strict";
 
-(function (Date, Number) {
+(function (Date, String) {
     var $D = Date,
         $P = $D.prototype,
-        $N = Number.prototype;
+        $S = String.prototype;
 
     $P.fa = function () {
         return new FarsiDate(this, arguments);
@@ -39,7 +39,7 @@
     * @public
     * @return {String} 
     */
-    $N.toFarsiDigits = function () {
+    $S.toFarsiDigits = function () {
         var charCodeZero = '۰'.charCodeAt(0);
         return this.replace(/[0-9]/g, function (w) {
             return String.fromCharCode(parseInt(w) + charCodeZero);
@@ -70,7 +70,6 @@
                     this.cacheDate = args[0].getCacheDate();
                 } else if (args.length == 3) {
                     var fD = _D.jalaliToGregorian(args[0], args[1], args[2]);
-                    console.log(fD);
                     this.cacheDate.setFullYear(fD.year);
                     this.cacheDate.setMonth(fD.month);
                     this.cacheDate.setDate(fD.date);
@@ -85,12 +84,13 @@
          * @method
          * @public
          * @param {number} jy Jalali year (\d{4})
-         * @param {number} jm Jalali month (1 to 12)
+         * @param {number} jm Jalali month (0 to 11)
          * @param {number} jd Jalali day (1 to 29/31)
          * @return {Object} {`year` is Gregorian Year, `month` is Gregorian Month, `date` is Gregorian Date} 
          */
         _D.jalaliToGregorian = function (jy, jm, jd) {
             var gy, gm, gd, days, sal_a, v;
+            jm+= 1;
             if (jy > 979) {
                 gy = 1600;
                 jy -= 979;
@@ -155,7 +155,7 @@
             jm = (days < 186) ? 1 + parseInt(days / 31) : 7 + parseInt((days - 186) / 30);
             jd = 1 + ((days < 186) ? (days % 31) : ((days - 186) % 30));
 
-            return { 'year': jy, 'month': jm, 'date': jd };
+            return { 'year': jy, 'month': (jm - 1), 'date': jd };
         };
 
 
@@ -233,9 +233,9 @@
          * @return {Number}  The number of days in the month.
          */
         _D.getDaysInMonth = function (faYear, faMonth) {
-            if (faMonth < 1 || faMonth > 12) return 0;
-            if (faMonth < 7) return 31;
-            if (faMonth < 12) return 30;
+            if (faMonth < 0 || faMonth > 11) return 0;
+            if (faMonth < 6) return 31;
+            if (faMonth < 11) return 30;
             if (_D.isLeapYear(faYear)) {
                 return 30;
             }
@@ -323,7 +323,7 @@
         * @param {number} years years
         * @return {Date} current Date instance.
         */
-        _P.faAddYears = function (years) {
+        _P.addYears = function (years) {
             return this.addMonths(years * 12) && this;
         };
 
@@ -824,21 +824,21 @@
             function _getTokenReplacement(token, date) {
                 switch (token) {
                     case 's':
-                        return _zeroDel(date.getSeconds());
-                    case 'ss':
                         return date.getSeconds();
+                    case 'ss':
+                        return _zeroPad(date.getSeconds()+ '');
                     case 'm':
-                        return _zeroDel(date.getMinutes());
-                    case 'mm':
                         return date.getMinutes();
+                    case 'mm':
+                        return _zeroPad(date.getMinutes()+ '');
                     case 'h':
-                        return _zeroDel((date.getHours() % 12 || 12));
-                    case 'hh':
                         return (date.getHours() % 12 || 12);
+                    case 'hh':
+                        return _zeroPad((date.getHours() % 12 || 12)+ '');
                     case 'H':
-                        return _zeroDel(date.getHours());
-                    case 'HH':
                         return date.getHours();
+                    case 'HH':
+                        return _zeroPad(date.getHours()+ '');
                     case 'd':
                         return date.getDate();
                     case 'dd':
@@ -848,13 +848,13 @@
                     case 'dddd':
                         return locales.fa.dayNames[date.getDay()];
                     case 'M':
-                        return date.getMonth();
+                        return (date.getMonth() + 1);
                     case 'MM':
-                        return _zeroPad(date.getMonth());
+                        return _zeroPad((date.getMonth() + 1));
                     case 'MMM':
-                        return locales.fa.monthNamesShort[date.getMonth() - 1];
+                        return locales.fa.monthNamesShort[date.getMonth()];
                     case 'MMMM':
-                        return locales.fa.monthNames[date.getMonth() - 1];
+                        return locales.fa.monthNames[date.getMonth()];
                     case 'yy':
                         return parseInt((date.getFullYear() + '').substring(2));
                     case 'yyyy':
@@ -874,4 +874,4 @@
 
         return FarsiDate;
     })();
-})(Date, Number);
+})(Date, String);
