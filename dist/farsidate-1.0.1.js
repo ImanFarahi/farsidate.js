@@ -3,7 +3,7 @@
  * @author: Iman Farahi
  * @version 1.0.1
  * @date: 2019-01-09
- * @copyright: (c) 2018 ImanFarahi - professionalProgrammer.ir
+ * @copyright: (c) 2018 ImanFarahi - professionalProgrammer.ir 
  * @license: MIT License
  * @email: professionalProgrammer.ir@gmail.com 
  * @Website: http://professionalProgrammer.ir
@@ -17,6 +17,12 @@
         $P = $D.prototype,
         $S = String.prototype;
 
+
+    /**
+     * @public
+     * @method
+     * @description Farsi Date Library
+     */
     $P.fa = function () {
         return new FarsiDate(this, arguments);
     }
@@ -194,6 +200,7 @@
         _D.isDate = function (obj) {
             return obj instanceof FarsiDate || Object.prototype.toString.call(obj) === '[object FarsiDate]';
         };
+
 
 
         /**
@@ -912,4 +919,20 @@
 
         return FarsiDate;
     })();
+
+
+    /**
+     * @public
+     * @namespace
+     * @description select static method for add
+     */
+    (function ($D_fa) {
+
+        $D_fa.isDate = FarsiDate.isDate;
+
+    })($D.fa || ($D.fa = {}));
+
+
+
+
 })(Date, String);
