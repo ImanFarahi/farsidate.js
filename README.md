@@ -24,7 +24,7 @@ size:  12.3 KB
 
 ```
 
-## example
+## Example Usage
 
 ### fa main function
 ```javascript
