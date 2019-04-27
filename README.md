@@ -173,7 +173,7 @@ console.log(fD.setMonth(11).getDaysInMonth()); // 29
 ### startOfMonth() method
 ```javascript
 var fD = new Date().fa(1397,1,15); // month (0-11)
-console.log(fD.startOfMonth(0).toISODate());  // 1397-02-01 - month (1-12)
+console.log(fD.startOfMonth().toISODate());  // 1397-02-01 - month (1-12)
 ```
 
 ### addDays() method
