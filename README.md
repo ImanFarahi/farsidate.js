@@ -3,7 +3,7 @@ Javascript Farsi Date Extension
 <br />
 WebSite: http://farsidate.ir
 <br />
-version: 1.0.1
+version: 1.0.2
 
 
 Farsi Date
@@ -13,7 +13,7 @@ size:  13 KB
 ## Browser
 
 ```html
-<script src="./dist/farsidate-1.0.1.min.js" type="text/javascript"></script>
+<script src="./dist/farsidate-1.0.2.min.js" type="text/javascript"></script>
 
 <p id="demo"></p>
 
