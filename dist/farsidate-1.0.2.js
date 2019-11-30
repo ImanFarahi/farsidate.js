@@ -1,9 +1,9 @@
 /**
- * @file: farsidate-1.0.1.js
+ * @file: farsidate-1.0.2.js
  * @author: Iman Farahi
- * @version 1.0.1
- * @date: 2019-01-09
- * @copyright: (c) 2018 ImanFarahi - professionalProgrammer.ir 
+ * @version 1.0.2
+ * @date: 2019-11-30
+ * @copyright: (c) 2019 ImanFarahi - professionalProgrammer.ir 
  * @license: MIT License
  * @email: professionalProgrammer.ir@gmail.com 
  * @Website: http://professionalProgrammer.ir
@@ -102,10 +102,8 @@
                 if (args.length == 1 && (_D.isDate(args[0]))) {
                     this.cacheDate = args[0].getCacheDate();
                 } else if (args.length == 3) {
-                    var fD = _D.jalaliToGregorian(args[0], args[1], args[2]);
-                    this.cacheDate.setFullYear(fD.year);
-                    this.cacheDate.setMonth(fD.month);
-                    this.cacheDate.setDate(fD.date);
+                    var gD = _D.jalaliToGregorian(args[0], args[1], args[2]);
+                    this.cacheDate.setFullYear(gD.year, gD.month, gD.date);
                 }
             }
 
@@ -310,7 +308,7 @@
             var fD, gD;
             fD = _D.gregorianToJalali(this.cacheDate.getFullYear(), this.cacheDate.getMonth(), this.cacheDate.getDate());
             gD = _D.jalaliToGregorian(fD.year, fD.month, 1);
-            return this.cacheDate.setFullYear(gD.year) && this.cacheDate.setMonth(gD.month) && this.cacheDate.setDate(gD.date) && this;
+            return this.cacheDate.setFullYear(gD.year, gD.month, gD.date) && this;
         };
 
 
@@ -358,7 +356,7 @@
             }
             newFaM -= 1;
             gD = _D.jalaliToGregorian(newFaY, newFaM, Math.min(fD.date, _D.getDaysInMonth(newFaY, newFaM)));
-            return this.cacheDate.setFullYear(gD.year) && this.cacheDate.setMonth(gD.month) && this.cacheDate.setDate(gD.date) && this;;
+            return this.cacheDate.setFullYear(gD.year, gD.month, gD.date) && this;
         };
 
 
@@ -561,7 +559,7 @@
             var fD, gD;
             fD = _D.gregorianToJalali(this.cacheDate.getFullYear(), this.cacheDate.getMonth(), this.cacheDate.getDate());
             gD = _D.jalaliToGregorian(fD.year, fD.month, faDate);
-            return this.cacheDate.setFullYear(gD.year) && this.cacheDate.setMonth(gD.month) && this.cacheDate.setDate(gD.date) && this;
+            return this.cacheDate.setFullYear(gD.year, gD.month, gD.date) && this;
         };
 
 
@@ -569,7 +567,7 @@
             var fD, gD;
             fD = _D.gregorianToJalali(this.cacheDate.getFullYear(), this.cacheDate.getMonth(), this.cacheDate.getDate());
             gD = _D.jalaliToGregorian(faYear, fD.month, fD.date);
-            return this.cacheDate.setFullYear(gD.year) && this.cacheDate.setMonth(gD.month) && this.cacheDate.setDate(gD.date) && this;
+            return this.cacheDate.setFullYear(gD.year, gD.month, gD.date) && this;
         };
 
 
@@ -592,7 +590,7 @@
             var fD, gD;
             fD = _D.gregorianToJalali(this.cacheDate.getFullYear(), this.cacheDate.getMonth(), this.cacheDate.getDate());
             gD = _D.jalaliToGregorian(fD.year, faMonth, fD.date);
-            return this.cacheDate.setFullYear(gD.year) && this.cacheDate.setMonth(gD.month) && this.cacheDate.setDate(gD.date) && this;
+            return this.cacheDate.setFullYear(gD.year, gD.month, gD.date) && this;
         };
 
 
@@ -645,7 +643,7 @@
             var fD, gD;
             fD = _D.gregorianToJalali(this.cacheDate.getFullYear(), this.cacheDate.getMonth(), this.cacheDate.getDate());
             gD = _D.jalaliToGregorian(faYear, fD.month, fD.date);
-            return this.cacheDate.setFullYear(gD.year) && this.cacheDate.setMonth(gD.month) && this.cacheDate.setDate(gD.date) && this;
+            return this.cacheDate.setFullYear(gD.year, gD.month, gD.date) && this;
         };
 
 
