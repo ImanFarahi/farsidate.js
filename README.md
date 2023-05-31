@@ -157,8 +157,8 @@ console.log(fD.today().getHours()); // 0
 ### setFullYear() method
 ```javascript
 var fD = new Date().fa(); 
-console.log(fD.setFullYear(1398).isLeap()); // true
-console.log(fD.setFullYear(1399).isLeap()); // false
+console.log(fD.setFullYear(1398).isLeap()); // false
+console.log(fD.setFullYear(1399).isLeap()); // true
 ```
 
 ### getDaysInMonth() method
